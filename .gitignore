@@ -17,6 +17,9 @@ lib-cov
 # Temp
 .docz
 
+# Build
+app
+
 # Coverage directory used by tools like istanbul
 coverage
 

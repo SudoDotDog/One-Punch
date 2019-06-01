@@ -26,10 +26,10 @@
         "target": "es5",
     },
     "exclude": [
-        "node_modules",
-        "test"
+        "../node_modules",
+        "../test"
     ],
     "include": [
-        "src/**/*"
+        "../src/**/*"
     ]
 }
