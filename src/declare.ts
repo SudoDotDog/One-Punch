@@ -15,7 +15,11 @@ export type OneInputProps = {
     readonly onChange: (next: string) => void;
 };
 
-export type OneComponentIndex = {
+export type OneComponentIndex = Partial<{
 
     input: React.ComponentType<OneInputProps>;
+}>;
+
+export type OneStructure = {
+
 };

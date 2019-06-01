@@ -5,7 +5,8 @@
  */
 
 import * as React from "react";
-import { OneComponentIndex, OneHydratedProps } from "./declare";
+import { OneComponentIndex, OneHydratedProps, OneStructure } from "./declare";
+import { createHydrateComponent } from "./hydrate";
 
 export class One {
 
@@ -14,7 +15,7 @@ export class One {
         return new One();
     }
 
-    private readonly _registry: Partial<OneComponentIndex>;
+    private readonly _registry: OneComponentIndex;
 
     private constructor() {
 
@@ -27,8 +28,8 @@ export class One {
         return this;
     }
 
-    public hydrate(): React.ComponentType<OneHydratedProps> {
+    public hydrate(structure: OneStructure): React.ComponentType<OneHydratedProps> {
 
-        return null as any;
+        return createHydrateComponent(this._registry, structure);
     }
 }
