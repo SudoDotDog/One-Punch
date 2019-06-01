@@ -12,11 +12,15 @@ main: run
 
 run: 
 	@echo "[INFO] Starting docz environment"
-	@NODE_ENV=development $(docz)
+	@NODE_ENV=development $(docz) dev
 
 build:
 	@echo "[INFO] Building for release"
 	@NODE_ENV=production $(tsc) --p $(tsconfig_build_path)
+
+docz:
+	@echo "[INFO] Building docz"
+	@NODE_ENV=development $(docz) build
 
 tests:
 	@echo "[INFO] Testing with Mocha"
