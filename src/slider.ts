@@ -14,7 +14,7 @@ export type SliderProps = {
     readonly default?: string;
 };
 
-export const Slider: React.FC<SliderProps> = (props: SliderProps): React.ReactElement => {
+export const Slider: React.FC<SliderProps> = (props: SliderProps) => {
 
     if (!props.children) {
         return null;
