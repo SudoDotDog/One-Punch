@@ -9,6 +9,7 @@ import * as React from "react";
 export type FrameProviderProps = {
 
     readonly children: any;
+    readonly active: string;
 };
 
 export const FrameProvider: React.FC<FrameProviderProps> = (props: FrameProviderProps) => {
@@ -20,12 +21,15 @@ export const FrameProvider: React.FC<FrameProviderProps> = (props: FrameProvider
     const children: React.ReactElement[] = React.Children.toArray(props.children);
 
     for (const frame of children) {
-        if (frame.props.name) {
 
+        const type: any = frame.type;
+
+        if (type.displayName === "Frame"
+            && frame.props.name === props.active) {
+
+            return frame;
         }
     }
-
-    console.log(children);
 
     return null;
 };
