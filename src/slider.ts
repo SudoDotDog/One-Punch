@@ -1,12 +1,12 @@
 /**
  * @author WMXPY
  * @namespace One
- * @description Provider
+ * @description Slider
  */
 
 import * as React from "react";
 
-export type FrameProviderProps = {
+export type SliderProps = {
 
     readonly children: any;
     readonly active: string;
@@ -14,7 +14,7 @@ export type FrameProviderProps = {
     readonly default?: string;
 };
 
-export const FrameProvider: React.FC<FrameProviderProps> = (props: FrameProviderProps) => {
+export const Slider: React.FC<SliderProps> = (props: SliderProps): React.ReactElement => {
 
     if (!props.children) {
         return null;
