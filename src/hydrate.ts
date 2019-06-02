@@ -11,6 +11,8 @@ export const createHydrateComponent = (index: OneComponentIndex, structure: OneS
 
     return (props: OneHydratedProps): React.ReactElement => {
 
-        return <div>123</div>;
+        return React.createElement('div', {
+
+        }, 213);
     };
 };
