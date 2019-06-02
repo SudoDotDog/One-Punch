@@ -17,5 +17,15 @@ export const FrameProvider: React.FC<FrameProviderProps> = (props: FrameProvider
         return null;
     }
 
-    props.children.find((slot) => console.log(slot));
+    const children: React.ReactElement[] = React.Children.toArray(props.children);
+
+    for (const frame of children) {
+        if (frame.props.name) {
+
+        }
+    }
+
+    console.log(children);
+
+    return null;
 };
