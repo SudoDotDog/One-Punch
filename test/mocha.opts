@@ -2,6 +2,7 @@
 --ui bdd
 
 --require test/tshook.js
+--require test/mock.ts
 
 --recursive
 

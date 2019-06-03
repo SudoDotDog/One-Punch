@@ -8,7 +8,7 @@ import * as React from "react";
 
 export type FrameProps = {
 
-    readonly children: any;
+    readonly children?: any;
     readonly frame: string;
 };
 
