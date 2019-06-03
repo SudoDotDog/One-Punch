@@ -25,13 +25,13 @@ export const createInitValue = (elements: OneElement[]): Record<string, any> => 
 
 export const createHydrateComponent = (index: OneComponentIndex, elements: OneElement[]): React.FC<OneHydratedProps> => {
 
-    const Hello: React.FC<OneHydratedProps> = (props: OneHydratedProps): React.ReactElement | null => {
+    const Hydrated: React.FC<OneHydratedProps> = (props: OneHydratedProps): React.ReactElement | null => {
 
         const parsed = elements.map((element: OneElement, order: number) => {
 
             const common: Record<string, any> = {
                 className: element.className,
-                key: element.key || order + 1,
+                key: element.key || `key__${order + 1}`,
                 props: element.props,
             };
 
@@ -59,5 +59,5 @@ export const createHydrateComponent = (index: OneComponentIndex, elements: OneEl
         return React.createElement(React.Fragment, {}, ...parsed);
     };
 
-    return Hello;
+    return Hydrated;
 };
