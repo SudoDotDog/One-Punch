@@ -21,6 +21,14 @@ export class One {
         this._registry = {};
     }
 
+    public component<T extends keyof OneComponentIndex>(type: T): OneComponentIndex[T] | null {
+
+        if (this._registry[type]) {
+            return this._registry[type];
+        }
+        return null;
+    }
+
     public register<T extends keyof OneComponentIndex>(type: T, component: OneComponentIndex[T]): this {
 
         this._registry[type] = component;
