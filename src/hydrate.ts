@@ -8,6 +8,21 @@ import { _Map } from "@sudoo/bark/map";
 import * as React from "react";
 import { OneComponentIndex, OneElement, OneHydratedProps } from "./declare";
 
+export const createInitValue = (elements: OneElement[]): Record<string, any> => {
+
+    return elements.reduce((previous: Record<string, any>, element: OneElement) => {
+
+        switch (element.role) {
+            case 'input': return {
+                ...previous,
+                [element.field]: element.defaultValue || '',
+            };
+        }
+
+        return previous;
+    }, {});
+};
+
 export const createHydrateComponent = (index: OneComponentIndex, elements: OneElement[]): React.FC<OneHydratedProps> => {
 
     return (props: OneHydratedProps): React.ReactElement => {

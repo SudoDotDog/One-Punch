@@ -44,7 +44,7 @@ export type OneElement = {
     readonly role: "input";
     readonly field: string;
     readonly type: InputType;
-    readonly defaultValue: string;
+    readonly defaultValue?: string;
 } & Expendables | {
 
     readonly role: "button";

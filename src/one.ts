@@ -4,9 +4,8 @@
  * @description One
  */
 
-import * as React from "react";
-import { OneComponentIndex, OneHydratedProps, OneElement } from "./declare";
-import { createHydrateComponent } from "./hydrate";
+import { OneComponentIndex, OneElement } from "./declare";
+import { Form } from "./form";
 
 export class One {
 
@@ -28,8 +27,8 @@ export class One {
         return this;
     }
 
-    public hydrate(elements: OneElement[]): React.ComponentType<OneHydratedProps> {
+    public hydrate(elements: OneElement[]): Form {
 
-        return createHydrateComponent(this._registry, elements);
+        return Form.fromStructure(this._registry, elements);
     }
 }
