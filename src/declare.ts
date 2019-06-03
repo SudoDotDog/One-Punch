@@ -43,11 +43,11 @@ export type OneElement = {
 
     readonly role: "input";
     readonly field: string;
-    readonly type: InputType;
+    readonly type?: InputType;
     readonly defaultValue?: string;
 } & Expendables | {
 
     readonly role: "button";
     readonly text: string;
-    readonly onClick: () => void;
+    readonly onClick: (value: Record<string, any>) => void;
 } & Expendables;

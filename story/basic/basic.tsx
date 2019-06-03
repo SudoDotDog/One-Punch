@@ -8,7 +8,32 @@
 import * as React from "react";
 import { One } from "../../src/one";
 
-export const punch = One.create()
-    .register('input', () => <input></input>);
+export const punch = One.create();
+// .register('input', () => <input></input>)
+// .register('button', (props: any) => <button>{props.children}</button>);
 
-export const Basic = () => <div>123</div>;
+const form = punch.hydrate([
+    {
+        role: 'button',
+        text: 'Hello',
+        onClick: (value) => alert(JSON.stringify(value)),
+    },
+    {
+        role: 'input',
+        field: 'qqq',
+    },
+]);
+
+export const Basic: React.FC = () => {
+
+    const [value, setValue] = React.useState(form.initValue);
+
+    return <form.Component
+        value={value}
+        onChange={(next: any) => {
+            console.log(next);
+            setValue(next);
+        }}
+    >
+    </form.Component>;
+};

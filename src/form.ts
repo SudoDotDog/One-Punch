@@ -18,19 +18,25 @@ export class Form {
     private readonly _index: OneComponentIndex;
     private readonly _elements: OneElement[];
 
+    private readonly _component: React.ComponentType<OneHydratedProps>;
+    private readonly _initValue: Record<string, any>;
+
     private constructor(index: OneComponentIndex, elements: OneElement[]) {
 
         this._index = index;
         this._elements = elements;
+
+        this._component = createHydrateComponent(this._index, this._elements);
+        this._initValue = createInitValue(this._elements);
     }
 
     public get Component(): React.ComponentType<OneHydratedProps> {
 
-        return createHydrateComponent(this._index, this._elements);
+        return this._component;
     }
 
     public get initValue(): Record<string, any> {
 
-        return createInitValue(this._elements);
+        return this._initValue;
     }
 }
