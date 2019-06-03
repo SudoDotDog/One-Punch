@@ -5,7 +5,7 @@
  */
 
 import * as React from "react";
-import { OneComponentIndex, OneHydratedProps, OneStructure } from "./declare";
+import { OneComponentIndex, OneHydratedProps, OneElement } from "./declare";
 import { createHydrateComponent } from "./hydrate";
 
 export class One {
@@ -28,8 +28,8 @@ export class One {
         return this;
     }
 
-    public hydrate(structure: OneStructure): React.ComponentType<OneHydratedProps> {
+    public hydrate(elements: OneElement[]): React.ComponentType<OneHydratedProps> {
 
-        return createHydrateComponent(this._registry, structure);
+        return createHydrateComponent(this._registry, elements);
     }
 }

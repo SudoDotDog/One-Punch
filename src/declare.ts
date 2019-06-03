@@ -10,27 +10,27 @@ export type InputType = "text" | "email" | "password" | "number";
 
 export type OneHydratedProps = {
 
+    readonly onChange: (next: Record<string, any>) => void;
+    readonly value: Record<string, any>;
 };
 
-export type OneInputProps = {
+export type OneInputProps = Partial<{
 
     readonly onChange: (next: string) => void;
     readonly type: InputType;
     readonly value: string;
-};
+}>;
 
-export type OneButtonProps = {
+export type OneButtonProps = Partial<{
 
     readonly onClick: () => void;
-};
+}>;
 
 export type OneComponentIndex = Partial<{
 
     input: React.ComponentType<OneInputProps>;
     button: React.ComponentType<OneButtonProps>;
 }>;
-
-export type OneStructure = Record<string, OneElement>;
 
 export type Expendables = {
 
@@ -41,10 +41,12 @@ export type Expendables = {
 export type OneElement = {
 
     readonly role: "input";
+    readonly field: string;
     readonly type: InputType;
     readonly defaultValue: string;
 } & Expendables | {
 
     readonly role: "button";
+    readonly text: string;
     readonly onClick: () => void;
 } & Expendables;
