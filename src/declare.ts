@@ -36,6 +36,7 @@ export type Expendables = {
 
     readonly className?: string;
     readonly props?: Record<string, any>;
+    readonly key?: string;
 };
 
 export type OneElement = {

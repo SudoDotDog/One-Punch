@@ -12,13 +12,21 @@ export const createHydrateComponent = (index: OneComponentIndex, elements: OneEl
 
     return (props: OneHydratedProps): React.ReactElement => {
 
-        const parsed = elements.map((element: OneElement) => {
+        const parsed = elements.map((element: OneElement, order: number) => {
+
+            const common: Record<string, any> = {
+                className: element.className,
+                key: element.key || order,
+                props: element.props,
+            };
 
             switch (element.role) {
                 case 'button': return React.createElement(index.button || 'button', {
+                    ...common,
                     onClick: element.onClick,
                 }, element.text);
                 case 'input': return React.createElement(index.input || 'input', {
+                    ...common,
                     onChange: (next: React.ChangeEvent<HTMLInputElement> | string) => {
                         if (typeof next === 'string') {
                             props.onChange(_Map.mutate(props.value, element.field, next));
