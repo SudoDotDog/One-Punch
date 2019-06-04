@@ -52,6 +52,9 @@ export const createHydrateComponent = (index: OneComponentIndex, elements: OneEl
                     type: element.type || 'text',
                     value: props.value[element.field],
                 });
+                case 'text': return React.createElement(index.text || 'span', {
+                    ...common,
+                }, element.text);
             }
             return null;
         });

@@ -24,12 +24,9 @@ export type OneInputProps = Partial<{
 export type OneButtonProps = Partial<{
 
     readonly onClick: () => void;
-    readonly text: string;
 }>;
 
 export type OneTextProps = Partial<{
-
-    readonly text: string;
 }>;
 
 export type OneComponentIndex = Partial<{
@@ -46,19 +43,19 @@ export type Expendables = {
     readonly key?: string;
 };
 
-export type OneElement = {
+export type OneElement = ({
 
     readonly role: "input";
     readonly field: string;
     readonly type?: InputType;
     readonly defaultValue?: string;
-} & Expendables | {
+} | {
 
     readonly role: "button";
     readonly text: string;
     readonly onClick: (value: Record<string, any>) => void;
-} & Expendables | {
+} | {
 
     readonly role: "text";
     readonly text: string;
-};
+}) & Expendables;
