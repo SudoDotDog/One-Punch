@@ -6,7 +6,8 @@
 
 import * as React from "react";
 
-export const useHistory = <T = any>(initState: T): [T, (next: T) => void, void | null, void | null] => {
+export const useHistory = <T = any>(initState: T):
+    [T, (next: T) => void, void | null, void | null, T[]] => {
 
     const [versions, setVersions] = React.useState<T[]>([initState]);
     const [current, setCurrent] = React.useState<number>(0);
@@ -28,5 +29,6 @@ export const useHistory = <T = any>(initState: T): [T, (next: T) => void, void |
         nextVersion,
         undoable ? setCurrent(Math.max(current - 1, 0)) : null,
         redoable ? setCurrent(Math.min(current + 1, versions.length - 1)) : null,
+        versions,
     ];
 };
