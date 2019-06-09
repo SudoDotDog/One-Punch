@@ -31,7 +31,7 @@ export const createHydrateComponent = (index: OneComponentIndex, elements: OneEl
 
             const common: Record<string, any> = {
                 className: element.className,
-                key: element.key || `key__${order + 1}`,
+                key: element.key || `key__${order}`,
                 props: element.props,
             };
 

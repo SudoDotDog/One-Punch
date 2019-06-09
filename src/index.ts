@@ -4,9 +4,9 @@
  * @description Index
  */
 
-export * from "./declare";
-export { Form } from "./form";
-export * from "./frame";
-export { One } from "./one";
-export * from "./slider";
+export * from "./form/declare";
+export { Form } from "./form/form";
+export { One } from "./form/one";
+export * from "./frame/frame";
+export * from "./frame/slider";
 
