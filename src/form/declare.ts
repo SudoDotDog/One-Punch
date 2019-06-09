@@ -32,10 +32,11 @@ export type OneTextLikeProps = Partial<{
 export type OneComponentIndex = Partial<{
 
     button: React.ComponentType<OneButtonProps>;
-    flag: React.Component<OneTextLikeProps>;
     input: React.ComponentType<OneInputProps>;
+
+    flag: React.ComponentType<OneTextLikeProps>;
     text: React.ComponentType<OneTextLikeProps>;
-    title: React.Component<OneTextLikeProps>;
+    title: React.ComponentType<OneTextLikeProps>;
 }>;
 
 export type Expendables = {
@@ -58,6 +59,6 @@ export type OneElement = ({
     readonly onClick: (value: Record<string, any>) => void;
 } | {
 
-    readonly role: "text";
+    readonly role: "text" | "flag" | "title";
     readonly text: string;
 }) & Expendables;

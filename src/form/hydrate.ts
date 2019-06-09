@@ -35,7 +35,11 @@ export const createDivCoveredElement = (
     }, React.createElement(type, props, ...children));
 };
 
-export const createHydrateComponent = (index: OneComponentIndex, elements: OneElement[]): React.FC<OneHydratedProps> => {
+export const createHydrateComponent = (
+    index: OneComponentIndex,
+    elements: OneElement[],
+    className?: string,
+): React.FC<OneHydratedProps> => {
 
     const Hydrated: React.FC<OneHydratedProps> = (props: OneHydratedProps): React.ReactElement | null => {
 
@@ -48,26 +52,63 @@ export const createHydrateComponent = (index: OneComponentIndex, elements: OneEl
             };
 
             switch (element.role) {
-                case 'button': return createDivCoveredElement(index.button || 'button', {
-                    ...common,
-                    onClick: () => element.onClick(props.value),
-                }, [element.text]);
-                case 'input': return createDivCoveredElement(index.input || 'input', {
-                    ...common,
-                    onChange: (next: React.ChangeEvent<HTMLInputElement> | string) => {
-                        if (typeof next === 'string') {
-                            props.onChange(_Map.lash_mutate(props.value, element.field, next));
-                        } else {
-                            props.onChange(_Map.lash_mutate(props.value, element.field, next.target.value));
-                        }
-                    },
-                    type: element.type || 'text',
-                    value: props.value[element.field],
-                }, []);
-                case 'text': return createDivCoveredElement(index.text || 'span', {
-                    ...common,
-                }, [element.text]);
+                case 'button':
+                    return createDivCoveredElement(
+                        index.button || 'button',
+                        {
+                            ...common,
+                            onClick: () => element.onClick(props.value),
+                        },
+                        [element.text],
+                        className,
+                    );
+                case 'input':
+                    return createDivCoveredElement(
+                        index.input || 'input',
+                        {
+                            ...common,
+                            onChange: (next: React.ChangeEvent<HTMLInputElement> | string) => {
+                                if (typeof next === 'string') {
+                                    props.onChange(_Map.lash_mutate(props.value, element.field, next));
+                                } else {
+                                    props.onChange(_Map.lash_mutate(props.value, element.field, next.target.value));
+                                }
+                            },
+                            type: element.type || 'text',
+                            value: props.value[element.field],
+                        },
+                        [],
+                        className,
+                    );
+                case 'text':
+                    return createDivCoveredElement(
+                        index.text || 'span',
+                        {
+                            ...common,
+                        },
+                        [element.text],
+                        className,
+                    );
+                case 'flag':
+                    return createDivCoveredElement(
+                        index.flag || 'span',
+                        {
+                            ...common,
+                        },
+                        [element.text],
+                        className,
+                    );
+                case 'title':
+                    return createDivCoveredElement(
+                        index.title || 'span',
+                        {
+                            ...common,
+                        },
+                        [element.text],
+                        className,
+                    );
             }
+
             return null;
         });
 
