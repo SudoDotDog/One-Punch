@@ -7,7 +7,11 @@
 import * as React from "react";
 
 export const useHistory = <T = any>(initState: T):
-    [T, (next: T) => void, void | null, void | null, T[]] => {
+    [T, (next: T) => void, {
+        readonly undo?: () => void;
+        readonly redo?: () => void;
+        readonly versions: T[];
+    }] => {
 
     const [versions, setVersions] = React.useState<T[]>([initState]);
     const [current, setCurrent] = React.useState<number>(0);
@@ -16,7 +20,7 @@ export const useHistory = <T = any>(initState: T):
     const redoable: boolean = current !== versions.length - 1;
 
     const nextVersion = (next: T): void => {
-        const nextVersions = redoable
+        const nextVersions: T[] = redoable
             ? versions.slice(0, current + 1)
             : versions;
 
@@ -27,8 +31,10 @@ export const useHistory = <T = any>(initState: T):
     return [
         versions[current],
         nextVersion,
-        undoable ? setCurrent(Math.max(current - 1, 0)) : null,
-        redoable ? setCurrent(Math.min(current + 1, versions.length - 1)) : null,
-        versions,
+        {
+            undo: undoable ? (() => setCurrent(Math.max(current - 1, 0))) : undefined,
+            redo: redoable ? (() => setCurrent(Math.min(current + 1, versions.length - 1))) : undefined,
+            versions,
+        },
     ];
 };
