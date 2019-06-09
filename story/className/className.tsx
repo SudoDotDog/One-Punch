@@ -1,16 +1,14 @@
 /**
  * @author WMXPY
- * @namespace Basic
- * @description Basic
+ * @namespace ClassName
+ * @description ClassName
  * @override Story
  */
 
 import * as React from "react";
 import { One } from "../../src/form/one";
 
-export const punch = One.create();
-// .register('input', () => <input></input>)
-// .register('button', (props: any) => <button>{props.children}</button>);
+export const punch = One.create('test');
 
 const form = punch.hydrate([
     {
@@ -24,7 +22,7 @@ const form = punch.hydrate([
     },
 ]);
 
-export const Basic: React.FC = () => {
+export const ClassName: React.FC = () => {
 
     const [value, setValue] = React.useState(form.initValue);
 
