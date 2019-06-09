@@ -13,8 +13,9 @@ export const useHistory = <T = any>(initState: T):
         readonly versions: T[];
     }] => {
 
-    const [versions, setVersions] = React.useState<T[]>([initState]);
-    const [current, setCurrent] = React.useState<number>(0);
+    const initVersion: number = 0;
+    const [versions, setVersions]: [T[], (next: T[]) => void] = React.useState<T[]>([initState]);
+    const [current, setCurrent]: [number, (next: number) => void] = React.useState<number>(initVersion);
 
     const undoable: boolean = current !== 0;
     const redoable: boolean = current !== versions.length - 1;

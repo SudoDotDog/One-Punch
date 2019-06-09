@@ -10,7 +10,7 @@ import * as Chance from 'chance';
 import { useHistory } from "../../../src/history/history";
 import { testHook } from "../../mock/testHook";
 
-describe.only('Given a [useHistory] React Hook', (): void => {
+describe('Given a [useHistory] React Hook', (): void => {
 
     const chance: Chance.Chance = new Chance('one-punch-history-history');
 
