@@ -8,7 +8,7 @@
 
 import { expect } from "chai";
 import * as Chance from 'chance';
-import { One } from "../../src/form/one";
+import { One } from "../../../src/form/one";
 
 describe('Given a {One} Class', (): void => {
 
