@@ -9,7 +9,7 @@ import { expect } from "chai";
 import * as Chance from 'chance';
 import { shallow, ShallowWrapper } from 'enzyme';
 import * as React from "react";
-import { Frame, FrameProps } from "../../src/frame";
+import { Frame, FrameProps } from "../../src/frame/frame";
 
 describe('Given a <Frame /> Component', (): void => {
 
