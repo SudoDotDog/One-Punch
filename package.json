@@ -44,8 +44,5 @@
       "./test/tshook.js"
     ],
     "sourceMap": true
-  },
-  "dependencies": {
-    "@sudoo/io": "^1.6.0"
   }
 }

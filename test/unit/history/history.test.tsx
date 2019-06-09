@@ -10,7 +10,7 @@ import * as Chance from 'chance';
 import { useHistory } from "../../../src/history/history";
 import { testHook } from "../../mock/testHook";
 
-describe('Given a [useHistory] React Hook', (): void => {
+describe.only('Given a [useHistory] React Hook', (): void => {
 
     const chance: Chance.Chance = new Chance('one-punch-history-history');
 
@@ -30,6 +30,20 @@ describe('Given a [useHistory] React Hook', (): void => {
     });
 
     it('should be able to access history status', (): void => {
+
+        // tslint:disable-next-line
+        expect(history[2]).to.be.null;
+        // tslint:disable-next-line
+        expect(history[3]).to.be.null;
+        expect(history[4]).to.be.lengthOf(1);
+    });
+
+    it('should be able to add history', (): void => {
+
+        const next: number = chance.natural();
+        const addVersion: (next: number) => void = history[1];
+
+        // addVersion(next);
 
         // tslint:disable-next-line
         expect(history[2]).to.be.null;
