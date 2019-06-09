@@ -26,14 +26,16 @@ export type OneButtonProps = Partial<{
     readonly onClick: () => void;
 }>;
 
-export type OneTextProps = Partial<{
+export type OneTextLikeProps = Partial<{
 }>;
 
 export type OneComponentIndex = Partial<{
 
-    input: React.ComponentType<OneInputProps>;
     button: React.ComponentType<OneButtonProps>;
-    text: React.ComponentType<OneTextProps>;
+    flag: React.Component<OneTextLikeProps>;
+    input: React.ComponentType<OneInputProps>;
+    text: React.ComponentType<OneTextLikeProps>;
+    title: React.Component<OneTextLikeProps>;
 }>;
 
 export type Expendables = {
