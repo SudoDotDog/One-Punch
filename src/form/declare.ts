@@ -16,17 +16,19 @@ export type OneHydratedProps = {
 
 export type OneInputProps = Partial<{
 
-    readonly onChange: (next: string) => void;
+    readonly onChange: React.ChangeEventHandler<any>;
     readonly type: InputType;
     readonly value: string;
 }>;
 
 export type OneButtonProps = Partial<{
 
-    readonly onClick: () => void;
+    readonly onClick: React.MouseEventHandler<any>;
+    readonly children?: any;
 }>;
 
 export type OneTextLikeProps = Partial<{
+    readonly children?: any;
 }>;
 
 export type OneComponentIndex = Partial<{

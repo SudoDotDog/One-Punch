@@ -67,12 +67,8 @@ export const createHydrateComponent = (
                         index.input || 'input',
                         {
                             ...common,
-                            onChange: (next: React.ChangeEvent<HTMLInputElement> | string) => {
-                                if (typeof next === 'string') {
-                                    props.onChange(_Map.lash_mutate(props.value, element.field, next));
-                                } else {
-                                    props.onChange(_Map.lash_mutate(props.value, element.field, next.target.value));
-                                }
+                            onChange: (next: React.ChangeEvent<HTMLInputElement>) => {
+                                props.onChange(_Map.lash_mutate(props.value, element.field, next.target.value));
                             },
                             type: element.type || 'text',
                             value: props.value[element.field],
