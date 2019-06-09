@@ -6,7 +6,7 @@
  */
 
 import * as React from "react";
-import { One } from "../../src/one";
+import { One } from "../../src/form/one";
 
 export const punch = One.create();
 // .register('input', () => <input></input>)
