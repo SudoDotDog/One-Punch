@@ -23,6 +23,18 @@ export const createInitValue = (elements: OneElement[]): Record<string, any> => 
     }, {});
 };
 
+export const createDivCoveredElement = (
+    type: React.FunctionComponent | React.ComponentClass | string,
+    props: Record<string, any> | null,
+    children: React.ReactNode[],
+    className?: string,
+): React.ReactElement => {
+
+    return React.createElement('div', {
+        className,
+    }, React.createElement(type, props, ...children));
+};
+
 export const createHydrateComponent = (index: OneComponentIndex, elements: OneElement[]): React.FC<OneHydratedProps> => {
 
     const Hydrated: React.FC<OneHydratedProps> = (props: OneHydratedProps): React.ReactElement | null => {
@@ -36,11 +48,11 @@ export const createHydrateComponent = (index: OneComponentIndex, elements: OneEl
             };
 
             switch (element.role) {
-                case 'button': return React.createElement(index.button || 'button', {
+                case 'button': return createDivCoveredElement(index.button || 'button', {
                     ...common,
                     onClick: () => element.onClick(props.value),
-                }, element.text);
-                case 'input': return React.createElement(index.input || 'input', {
+                }, [element.text]);
+                case 'input': return createDivCoveredElement(index.input || 'input', {
                     ...common,
                     onChange: (next: React.ChangeEvent<HTMLInputElement> | string) => {
                         if (typeof next === 'string') {
@@ -51,10 +63,10 @@ export const createHydrateComponent = (index: OneComponentIndex, elements: OneEl
                     },
                     type: element.type || 'text',
                     value: props.value[element.field],
-                });
-                case 'text': return React.createElement(index.text || 'span', {
+                }, []);
+                case 'text': return createDivCoveredElement(index.text || 'span', {
                     ...common,
-                }, element.text);
+                }, [element.text]);
             }
             return null;
         });
