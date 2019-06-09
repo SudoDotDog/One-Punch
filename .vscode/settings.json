@@ -6,8 +6,10 @@
         "codecov",
         "docz",
         "onepunch",
+        "redoable",
         "triforce",
-        "tshook"
+        "tshook",
+        "undoable"
     ],
     "tslint.configFile": "typescript/tslint.json",
     "javascript.preferences.importModuleSpecifier": "relative",
