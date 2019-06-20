@@ -24,10 +24,7 @@ export const Slider: React.FC<SliderProps> = (props: SliderProps) => {
 
     for (const frame of children) {
 
-        const type: any = frame.type;
-
-        if (type.displayName === "Frame"
-            && frame.props.name === props.active) {
+        if (frame.props.name === props.active) {
 
             return frame;
         }
@@ -35,10 +32,7 @@ export const Slider: React.FC<SliderProps> = (props: SliderProps) => {
 
     for (const frame of children) {
 
-        const type: any = frame.type;
-
-        if (type.displayName === "Frame"
-            && frame.props.name === props.default) {
+        if (frame.props.name === props.default) {
 
             return frame;
         }
