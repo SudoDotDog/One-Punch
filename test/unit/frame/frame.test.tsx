@@ -17,7 +17,7 @@ describe('Given a <Frame /> Component', (): void => {
 
     const getDefaultProps = (): FrameProps => ({
 
-        frame: chance.string(),
+        name: chance.string(),
     });
 
     const render = (props: FrameProps = getDefaultProps(), children: any = chance.string()) => {

@@ -9,7 +9,7 @@ import * as React from "react";
 export type FrameProps = {
 
     readonly children?: any;
-    readonly frame: string;
+    readonly name: string;
 };
 
 export const Frame: React.FC<FrameProps> = (props: FrameProps) => {
