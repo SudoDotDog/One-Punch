@@ -20,6 +20,9 @@ lib-cov
 # Build
 app
 
+# lock
+yarn.lock
+
 # Coverage directory used by tools like istanbul
 coverage
 
