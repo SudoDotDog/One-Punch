@@ -20,9 +20,13 @@ export const Slider: React.FC<SliderProps> = (props: SliderProps) => {
         return null;
     }
 
-    const children: React.ReactElement[] = React.Children.toArray(props.children);
+    const children: any[] = React.Children.toArray(props.children);
 
     for (const frame of children) {
+
+        if (!frame.props) {
+            continue;
+        }
 
         if (frame.props.name === props.active) {
 
@@ -31,6 +35,10 @@ export const Slider: React.FC<SliderProps> = (props: SliderProps) => {
     }
 
     for (const frame of children) {
+
+        if (!frame.props) {
+            continue;
+        }
 
         if (frame.props.name === props.default) {
 
